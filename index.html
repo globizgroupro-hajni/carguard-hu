@@ -14,6 +14,7 @@ img{max-width:100%;display:block}
 .btn{display:inline-block;background:var(--red);color:#fff;font-weight:800;text-decoration:none;padding:16px 30px;border-radius:12px;font-size:17px;box-shadow:0 8px 24px rgba(225,18,29,.35);transition:.15s}
 .btn:hover{background:#ff1f2b;transform:translateY(-2px)}
 header{position:sticky;top:0;z-index:50;background:rgba(11,11,13,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+#inscriere{scroll-margin-top:90px}
 header .wrap{display:flex;align-items:center;gap:16px;padding:12px 20px}
 header img{height:30px}
 header .btn{margin-left:auto;padding:11px 20px;font-size:14px}
@@ -102,7 +103,7 @@ fbq("init","1473493377690750");fbq("track","PageView");
     <div class="kick">a B2B partnered</div>
     <h1>Autós kiegészítők, amelyek <span style="color:var(--red2)">profitot</span> hoznak &mdash; nem port a polcon.</h1>
     <p class="lead">Autós boltod vagy szervized, esetleg forgalmazó céged van, és olyan árut szeretnél, ami <b>mozog</b>? Legyél a CARGUARD® partnere.</p>
-    <span id="inscriere"></span><form id="leadform" action="https://formspree.io/f/xnjkzngr" method="POST" style="margin-top:14px;text-align:left;max-width:440px"><div class="frow"><input name="Nev" placeholder="Név *" required><input name="Ceg" placeholder="Cég *" required></div><input name="Telefon" type="tel" placeholder="Telefon *" required style="margin-top:8px"><input type="hidden" name="_subject" value="Lead B2B Ungaria (landing)"><label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mut);margin:8px 0 12px;line-height:1.4"><input type="checkbox" name="Hozzajarulas_GDPR" value="Igen" required style="width:auto;margin-top:3px;flex:0 0 auto"><span>Hozzájárulok, hogy a CARGUARD® kapcsolatba lépjen velem (telefon, email, WhatsApp) a B2B együttműködésről. <a href="https://carguard.hu/gdpr" target="_blank" rel="noopener" style="color:var(--red2);text-decoration:underline">Adatvédelem</a></span></label><button type="submit" class="btn" style="width:100%;border:0;cursor:pointer;font-size:16px">Küldd el az adataidat &rarr;</button><div class="reassure">&#10003; Ingyenes &middot; 2 perc &middot; 24 órán belül visszahívunk</div></form><div id="leadok" style="display:none;padding:14px 0"><div style="font-size:38px">&#9989;</div><h3 style="font-size:20px;margin:6px 0">Köszönjük!</h3><p class="lead">Megkaptuk az adataidat. Hamarosan felvesszük veled a kapcsolatot.</p></div>
+    <span id="inscriere"></span><form id="leadform" class="leadform" action="https://formspree.io/f/xnjkzngr" method="POST" style="margin-top:14px;text-align:left;max-width:440px"><div class="frow"><input name="Nev" placeholder="Név *" required><input name="Ceg" placeholder="Cég *" required></div><input name="Telefon" type="tel" placeholder="Telefon *" required style="margin-top:8px"><input type="hidden" name="_subject" value="Lead B2B Ungaria (landing)"><label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mut);margin:8px 0 12px;line-height:1.4"><input type="checkbox" name="Hozzajarulas_GDPR" value="Igen" required style="width:auto;margin-top:3px;flex:0 0 auto"><span>Hozzájárulok, hogy a CARGUARD® kapcsolatba lépjen velem (telefon, email, WhatsApp) a B2B együttműködésről. <a href="https://carguard.hu/gdpr" target="_blank" rel="noopener" style="color:var(--red2);text-decoration:underline">Adatvédelem</a></span></label><button type="submit" class="btn" style="width:100%;border:0;cursor:pointer;font-size:16px">Küldd el az adataidat &rarr;</button><div class="reassure">&#10003; Ingyenes &middot; 2 perc &middot; 24 órán belül visszahívunk</div></form><div id="leadok" class="leadok" style="display:none;padding:14px 0"><div style="font-size:38px">&#9989;</div><h3 style="font-size:20px;margin:6px 0">Köszönjük!</h3><p class="lead">Megkaptuk az adataidat. Hamarosan felvesszük veled a kapcsolatot.</p></div>
   </div>
   <div class="portrait"><img src="assets/logo.png" alt="CARGUARD®" style="position:absolute;top:16px;left:16px;height:26px;width:auto;filter:drop-shadow(0 2px 5px rgba(0,0,0,.95));z-index:3"><img src="assets/hajni.jpg" alt="CARGUARD® - a partnered"><div class="tag"><small>CARGUARD®</small></div></div>
 </div></section>
@@ -114,7 +115,7 @@ fbq("init","1473493377690750");fbq("track","PageView");
     Aztán jön a többi is: ellenőrzések, papírok, tanúsítványok, fordítások, engedélyek&hellip; és mindennel rendben kell lenned &mdash; anélkül, hogy bezárnád a boltot.<br><br>
     A hónap végén pedig: adók, fizetések, bérleti díjak, számlák. Reggeltől estig dolgozol, és néha épp akkor maradsz pénz nélkül, amikor a legjobban kellene.
   </div>
-</div><div class="wrap" style="text-align:center;margin-top:14px"><a class="btn" href="#inscriere">Regisztrálj a nagykereskedelmi árakért &rarr;</a></div></section>
+</div></section>
 
 <section style="background:var(--bg2)"><div class="wrap">
   <h2>Ezért van a <span class="r">CARGUARD®</span></h2>
@@ -122,7 +123,7 @@ fbq("init","1473493377690750");fbq("track","PageView");
   <div class="chips"><span class="chip">kiváló termékek</span><span class="chip">alacsony árak</span><span class="chip">készlet</span><span class="chip">támogatás</span></div>
   <p class="sub" style="margin:6px 0 12px">+ minőségi csomagolás és egyedi, vonzó dizájn</p>
   <div class="chips"><span class="chip">tanúsítványok</span><span class="chip">fordítások</span><span class="chip">engedélyek</span><span class="chip">garanciák</span></div>
-</div><div class="wrap" style="text-align:center;margin-top:14px"><a class="btn" href="#inscriere">Regisztrálj a nagykereskedelmi árakért &rarr;</a></div></section>
+</div></section>
 
 <section><div class="wrap">
   <h2><span class="r">Termékeink</span></h2>
@@ -197,7 +198,7 @@ fbq("init","1473493377690750");fbq("track","PageView");
         <img src="assets/logo.png" alt="CARGUARD®" style="height:46px;margin:0 auto 14px;display:block"><h2>Legyél a <span class="r">partnerünk</span></h2>
         <p class="sub" style="margin:8px 0 0">Regisztrálj ingyen a B2B platformunkon, és hozzáférsz a nagykereskedelmi árakhoz és a teljes termékkínálathoz.</p>
         <div class="gift">&#127873; Meglepetés ajándék az első rendelésedhez &mdash; összegtől függetlenül!</div><br>
-        <a class="btn" href="#inscriere" style="display:inline-block;text-decoration:none;border:0">Regisztrálj a nagykereskedelmi árakért &rarr;</a>
+        <form class="leadform" action="https://formspree.io/f/xnjkzngr" method="POST" style="margin-top:8px;text-align:left;max-width:460px;margin-left:auto;margin-right:auto"><div class="frow"><input name="Nev" placeholder="Név *" required><input name="Ceg" placeholder="Cég *" required></div><input name="Telefon" type="tel" placeholder="Telefon *" required style="margin-top:8px"><input type="hidden" name="_subject" value="Lead B2B Ungaria (landing)"><label style="display:flex;gap:8px;align-items:flex-start;font-size:11px;color:var(--mut);margin:8px 0 12px;line-height:1.4"><input type="checkbox" name="Hozzajarulas_GDPR" value="Igen" required style="width:auto;margin-top:3px;flex:0 0 auto"><span>Hozzájárulok, hogy a CARGUARD® kapcsolatba lépjen velem (telefon, email, WhatsApp) a B2B együttműködésről. <a href="https://carguard.hu/gdpr" target="_blank" rel="noopener" style="color:var(--red2);text-decoration:underline">Adatvédelem</a></span></label><button type="submit" class="btn" style="width:100%;border:0;cursor:pointer;font-size:16px">Küldd el az adataidat &rarr;</button><div class="reassure">&#10003; Ingyenes &middot; 2 perc &middot; 24 órán belül visszahívunk</div></form><div class="leadok" style="display:none;padding:14px 0"><div style="font-size:38px">&#9989;</div><h3 style="font-size:20px;margin:6px 0">Köszönjük!</h3><p class="lead">Megkaptuk az adataidat. Hamarosan felvesszük veled a kapcsolatot.</p></div>
 <div style="margin-top:20px;padding-top:18px;border-top:1px solid var(--line)">
   <p class="sub" style="font-size:14px;margin:0 0 12px">Már tudod, hogy partner szeretnél lenni?</p>
   <a href="https://carguard.hu/felhasznalo/regisztracio?ref=landing_hu" target="_blank" rel="noopener" style="display:inline-block;background:transparent;color:var(--red2);border:2px solid var(--red);font-weight:800;text-decoration:none;padding:13px 26px;border-radius:12px;font-size:15px">Regisztrálj közvetlenül a platformon &rarr;</a>
@@ -209,6 +210,6 @@ fbq("init","1473493377690750");fbq("track","PageView");
 </div></section>
 
 <footer><div class="wrap"><b>CARGUARD®</b> &middot; Globiz Group &middot; carguard.shop &middot; globiz.ro<br>Nagykereskedelmi autós kiegészítők (B2B) &mdash; minőség, garancia, közvetlenül a gyártótól.</div></footer>
-<script>(function(){var lf=document.getElementById("leadform");if(lf){lf.addEventListener("submit",function(e){e.preventDefault();var d=new FormData(lf);fetch(lf.action,{method:"POST",body:d,headers:{"Accept":"application/json"}}).then(function(r){if(r.ok){lf.style.display="none";document.getElementById("leadok").style.display="block";if(window.fbq)fbq("track","Lead");}else{alert("Hiba. Próbáld újra, vagy hívj minket.");}}).catch(function(){alert("Hálózati hiba. Próbáld újra.");});});}var reg=document.querySelectorAll('a[href*="carguard.hu/felhasznalo/regisztracio"]');for(var i=0;i<reg.length;i++){reg[i].addEventListener("click",function(){if(window.fbq)fbq("track","Lead");});}})();</script>
+<script>(function(){document.querySelectorAll("form.leadform").forEach(function(lf){lf.addEventListener("submit",function(e){e.preventDefault();var d=new FormData(lf);fetch(lf.action,{method:"POST",body:d,headers:{"Accept":"application/json"}}).then(function(r){if(r.ok){lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";if(window.fbq)fbq("track","Lead");}else{alert("Hiba. Próbáld újra, vagy hívj minket.");}}).catch(function(){alert("Hálózati hiba. Próbáld újra.");});});});var reg=document.querySelectorAll("a[href*=\"carguard.hu/felhasznalo/regisztracio\"]");for(var i=0;i<reg.length;i++){reg[i].addEventListener("click",function(){if(window.fbq)fbq("track","Lead");});}})();</script>
 <div class="sticky-cta"><a class="btn" href="#inscriere">Regisztrálj &mdash; nagykereskedelmi árak &rarr;</a><small>Ingyenes &middot; 2 perc &middot; Hozzáférés a nagykereskedelmi árakhoz</small></div></body>
 </html>
