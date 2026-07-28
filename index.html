@@ -210,7 +210,19 @@ fbq("init","1473493377690750");fbq("track","PageView");
 </div></section>
 
 <footer><div class="wrap"><b>CARGUARD®</b> &middot; Globiz Group &middot; carguard.shop &middot; globiz.ro<br>Nagykereskedelmi autós kiegészítők (B2B) &mdash; minőség, garancia, közvetlenül a gyártótól.</div></footer>
-<script>(function(){document.querySelectorAll("form.leadform").forEach(function(lf){lf.addEventListener("submit",function(e){e.preventDefault();var d=new FormData(lf);fetch(lf.action,{method:"POST",body:d,headers:{"Accept":"application/json"}}).then(function(r){if(r.ok){lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";if(window.fbq)fbq("track","Lead");window.open("https://drive.google.com/file/d/1ewnSP3rQV7HAKR2cN2Kh857M_YoX5Tr_/preview","_blank");}else{alert("Hiba. Próbáld újra, vagy hívj minket.");}}).catch(function(){alert("Hálózati hiba. Próbáld újra.");});});});var reg=document.querySelectorAll("a[href*=\"carguard.hu/felhasznalo/regisztracio\"]");for(var i=0;i<reg.length;i++){reg[i].addEventListener("click",function(){if(window.fbq)fbq("track","Lead");});}
+<script>(function(){
+  var TRIPWIRE_BASE="https://app-hu.carguard.shop";
+  document.querySelectorAll("form.leadform").forEach(function(lf){lf.addEventListener("submit",function(e){e.preventDefault();
+    var d=new FormData(lf);
+    fetch(lf.action,{method:"POST",body:d,headers:{"Accept":"application/json"}}).catch(function(){}); // CRM lead-log, nem blokkolja a redirectet
+    var payload={market:"HU",fullName:d.get("Nev")||"",company:d.get("Ceg")||"",phone:d.get("Telefon")||"",city:d.get("Cim")||"",email:d.get("Email")||"",vatNumberRaw:d.get("Adoszam")||"",dataConsent:true};
+    fetch(TRIPWIRE_BASE+"/api/tripwire/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).then(function(r){return r.json();}).then(function(j){
+      if(window.fbq)fbq("track","Lead");
+      if(j.tripwireUrl){window.location.href=TRIPWIRE_BASE+j.tripwireUrl;}
+      else{lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";}
+    }).catch(function(){lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";});
+  });});
+  var reg=document.querySelectorAll("a[href*=\"carguard.hu/felhasznalo/regisztracio\"]");for(var i=0;i<reg.length;i++){reg[i].addEventListener("click",function(){if(window.fbq)fbq("track","Lead");});}
 function cgCheckVat(vatInput,companyInput,cityInput,status,country){var val=vatInput.value.trim();if(!val)return;status.textContent="Ellenőrzés…";status.style.color="#a7a7ad";fetch("https://178-105-10-138.sslip.io/api/vat/validate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({vatNumber:val,country:country})}).then(function(r){return r.json();}).then(function(j){if(j.status==="valid"){status.textContent="✓ Érvényes adószám";status.style.color="#22C55E";if(companyInput&&!companyInput.value&&j.companyName)companyInput.value=j.companyName;if(cityInput&&!cityInput.value&&j.companyAddress)cityInput.value=j.companyAddress;}else{status.textContent="Nem sikerült megerősíteni";status.style.color="#ff5959";}}).catch(function(){status.textContent="Hálózati hiba";status.style.color="#ff5959";});}
 document.querySelectorAll('[name="Adoszam"]').forEach(function(vatInput){var form=vatInput.closest("form");var companyInput=form.querySelector('[name="Ceg"]');var cityInput=form.querySelector('[name="Cim"]');var status=form.querySelector(".vatstatus");vatInput.addEventListener("blur",function(){cgCheckVat(vatInput,companyInput,cityInput,status,"HU");});});
 document.querySelectorAll(".vatcheck-btn").forEach(function(btn){btn.addEventListener("click",function(e){e.preventDefault();var form=btn.closest("form");var vatInput=form.querySelector('[name="Adoszam"]');var companyInput=form.querySelector('[name="Ceg"]');var cityInput=form.querySelector('[name="Cim"]');var status=btn.parentNode.querySelector(".vatstatus");cgCheckVat(vatInput,companyInput,cityInput,status,"HU");});});
