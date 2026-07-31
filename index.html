@@ -217,8 +217,7 @@ fbq("init","1473493377690750");fbq("track","PageView");
     fetch(lf.action,{method:"POST",body:d,headers:{"Accept":"application/json"}}).catch(function(){}); // CRM lead-log, nem blokkolja a redirectet
     var payload={market:"HU",fullName:d.get("Nev")||"",company:d.get("Ceg")||"",phone:d.get("Telefon")||"",city:d.get("Cim")||"",email:d.get("Email")||"",vatNumberRaw:d.get("Adoszam")||"",dataConsent:true};
     fetch(TRIPWIRE_BASE+"/api/tripwire/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).then(function(r){return r.json();}).then(function(j){
-      if(window.fbq)fbq("track","Lead");
-      if(j.tripwireUrl){window.location.href=TRIPWIRE_BASE+j.tripwireUrl;}
+      if(j.tripwireUrl){if(window.fbq)fbq("track","Lead");window.location.href=TRIPWIRE_BASE+j.tripwireUrl;}
       else{lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";}
     }).catch(function(){lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";});
   });});
