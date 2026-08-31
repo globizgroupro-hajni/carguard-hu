@@ -81,6 +81,17 @@ footer b{color:#fff}
 .sticky-cta a{display:block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:14px;border-radius:10px;font-size:16px;text-align:center}
 .sticky-cta small{display:block;color:var(--mut);font-size:12px;margin-top:6px;text-align:center}
 @media(max-width:760px){.sticky-cta{display:block}body{padding-bottom:88px}}
+.regmodal-backdrop{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.72);align-items:center;justify-content:center;padding:20px}
+.regmodal-backdrop.show{display:flex}
+.regmodal{background:var(--bg2);border:1px solid var(--line);border-radius:20px;max-width:440px;width:100%;padding:36px 30px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.regmodal .check{font-size:46px;margin-bottom:12px}
+.regmodal h3{font-size:22px;font-weight:800;margin-bottom:10px}
+.regmodal p.body{color:var(--mut);font-size:14.5px;margin-bottom:22px;line-height:1.55}
+.regmodal .offerbox{background:linear-gradient(180deg,#1c1417,#141014);border:1px solid var(--red);border-radius:14px;padding:20px;margin-bottom:20px}
+.regmodal .offerbox .kicker{color:#FFC107;font-weight:800;font-size:13px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px}
+.regmodal .offerbox .text{font-size:16.5px;font-weight:700;line-height:1.4}
+.regmodal .offerbtn{display:block;width:100%;background:var(--red);color:#fff;font-weight:800;border:none;border-radius:12px;padding:16px 20px;font-size:16px;cursor:pointer}
+.regmodal .offerbtn:hover{background:#ff1f2b}
 #leadform input{width:100%;background:#0f0f12;border:1px solid var(--line);border-radius:10px;padding:13px 15px;color:var(--tx);font-size:15px;margin-bottom:10px;font-family:inherit}
 #leadform input:focus{outline:none;border-color:var(--red2)}
 #leadform .frow{display:flex;gap:10px}
@@ -210,6 +221,18 @@ fbq("init","1473493377690750");fbq("track","PageView");
 </div></section>
 
 <footer><div class="wrap"><b>CARGUARD®</b> &middot; Globiz Group &middot; carguard.shop &middot; globiz.ro<br>Nagykereskedelmi autós kiegészítők (B2B) &mdash; minőség, garancia, közvetlenül a gyártótól.</div></footer>
+<div class="regmodal-backdrop" id="regModal">
+  <div class="regmodal">
+    <div class="check">✅</div>
+    <h3>Köszönjük a regisztrációt!</h3>
+    <p class="body">Hamarosan emailben elküldjük a belépéshez szükséges felhasználónevet és jelszót &mdash; nézd meg a bejövő leveleid között, és a spam/levélszemét mappát is.</p>
+    <div class="offerbox">
+      <div class="kicker">🎁 Különleges ajánlat</div>
+      <div class="text">Csak most, regisztráció után &mdash; 30 percig érhető el!</div>
+    </div>
+    <button type="button" class="offerbtn" id="regModalBtn">Nézd meg az ajánlatot &rarr;</button>
+  </div>
+</div>
 <script>(function(){
   var TRIPWIRE_BASE="https://app-hu.carguard.shop";
   document.querySelectorAll("form.leadform").forEach(function(lf){lf.addEventListener("submit",function(e){e.preventDefault();
@@ -217,7 +240,13 @@ fbq("init","1473493377690750");fbq("track","PageView");
     fetch(lf.action,{method:"POST",body:d,headers:{"Accept":"application/json"}}).catch(function(){}); // CRM lead-log, nem blokkolja a redirectet
     var payload={market:"HU",fullName:d.get("Nev")||"",company:d.get("Ceg")||"",phone:d.get("Telefon")||"",city:d.get("Cim")||"",email:d.get("Email")||"",vatNumberRaw:d.get("Adoszam")||"",dataConsent:true};
     fetch(TRIPWIRE_BASE+"/api/tripwire/lead",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)}).then(function(r){return r.json();}).then(function(j){
-      if(j.tripwireUrl){if(window.fbq)fbq("track","Lead");window.location.href=TRIPWIRE_BASE+j.tripwireUrl;}
+      if(j.tripwireUrl){
+        if(window.fbq)fbq("track","Lead");
+        var modal=document.getElementById("regModal");
+        var modalBtn=document.getElementById("regModalBtn");
+        modalBtn.onclick=function(){window.location.href=TRIPWIRE_BASE+j.tripwireUrl;};
+        modal.classList.add("show");
+      }
       else{lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";}
     }).catch(function(){lf.style.display="none";var ok=lf.parentNode.querySelector(".leadok");if(ok)ok.style.display="block";});
   });});
